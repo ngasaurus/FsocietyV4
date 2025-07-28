@@ -1,0 +1,119 @@
+
+---
+
+Setup & Configuration
+
+Before using Fsociety V4, you need to configure the controller GUI to connect to your bot(s).
+
+1. Edit controller_gui.py to set your bot IP address
+
+Open the file controller_gui.py in a text editor like Notepad++ (or any editor you prefer).
+
+Find this line inside the send_command_to_bot function (around line 100):
+
+
+sock.connect(("0.0.0.0", 9999))  # Replace "0.0.0.0" with your bot machine's IP address
+
+Replace "0.0.0.0" with the actual IP address or hostname of your bot machine.
+
+
+
+---
+
+Examples:
+
+Your setup	What to put instead of "0.0.0.0"
+
+Bot and controller on the same machine	"127.0.0.1" or "localhost"
+Bot on another machine in your local network (LAN)	"192.168.x.x" (replace with your bot machine’s LAN IP)
+Bot on a remote server or VPS	"your.remote.server.ip"
+
+
+
+---
+
+How to do it in Notepad++
+
+1. Open Notepad++ and load controller_gui.py (File > Open).
+
+
+2. Press Ctrl + F to open the Find dialog.
+
+
+3. Search for sock.connect( to jump to the line quickly.
+
+
+4. Edit the IP inside the quotes as explained above.
+
+
+5. Save the file (File > Save or Ctrl + S).
+
+
+
+
+---
+
+2. Run your bots
+
+On each machine you want to use as a bot, open a terminal/command prompt.
+
+Navigate to the folder containing bot.py.
+
+Run:
+
+
+python3 bot.py
+
+The bot will start listening on port 9999 for commands.
+
+
+
+---
+
+3. Run the controller GUI
+
+On your controller machine (your PC or laptop):
+
+
+python3 controller_gui.py
+
+The GUI will open with the fsociety-style dark background and red text.
+
+
+
+---
+
+4. Launch an attack
+
+Fill in the form fields:
+
+Target IP / Domain: The target you want to test.
+
+Target Port: The port on the target machine to attack (e.g., 80 for HTTP).
+
+Attack ID: Any string to identify this attack session.
+
+Attack Type: Select one of TCP, UDP, or HTTP-GET.
+
+Duration: How long the attack should last (in seconds).
+
+Threads: Number of threads per bot to use.
+
+
+Click Launch Attack.
+
+You will see logs confirming the command was sent.
+
+
+
+---
+
+5. Monitor & Stop
+
+The attack will run for the specified duration.
+
+The bot(s) will automatically stop after that time.
+
+
+
+---
